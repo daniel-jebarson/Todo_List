@@ -14,6 +14,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:text="Good Morning"
+        android:fontFamily="@font/roboto"
         android:textColor="@color/purple_500"
         android:textSize="34dp">
 
