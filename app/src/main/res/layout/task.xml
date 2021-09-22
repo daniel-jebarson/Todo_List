@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#97f4fe">
 
     <EditText
         android:id="@+id/Task_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Type your task here"
-        android:textColorHint="#2170AF"
-        android:textSize="20dp">
+        android:textColor="#00aac5"
+        android:textColorHint="#0096ab"
+        android:textSize="20sp">
 
     </EditText>
 
@@ -20,14 +22,15 @@
         android:layout_below="@id/Task_title"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="3dp"
+        android:layout_marginEnd="3dp"
         android:layout_marginBottom="4dp"
         android:hint="Select here to choose the due date"
         android:paddingStart="5dp"
+        android:paddingEnd="5dp"
         android:paddingTop="1dp"
-        android:textColor="@color/purple_200"
-        android:textColorHint="@color/teal_200"
-        android:textSize="20dp">
+        android:textColor="#00aac5"
+        android:textColorHint="#0096ab"
+        android:textSize="20sp">
 
     </TextView>
 
@@ -38,8 +41,8 @@
         android:layout_below="@id/date_picker"
         android:layout_marginTop="10dp"
         android:hint="Type your task details here"
-        android:textColor="@color/black"
-        android:textColorHint="#FF5722"
+        android:textColor="#00aac5"
+        android:textColorHint="#0096ab"
         android:textSize="20dp">
 
     </EditText>
@@ -50,7 +53,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/task_description"
         android:layout_marginStart="5dp"
-        android:background="#4CAF50"
+        android:backgroundTint="#00aac5"
         android:text="Save">
 
     </Button>

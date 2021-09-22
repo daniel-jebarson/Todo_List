@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Splash_screen"
-    android:background="#03A9F4">
+    android:background="#00727a"
+    tools:context=".Splash_screen">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_launcher_background">
+        android:src="@drawable/ic_launcher_background"
+        android:contentDescription="Welcome to productivity zone">
 
     </ImageView>
 
@@ -27,10 +28,10 @@
         app:alliance_distanceMultiplier="4"
         app:alliance_dotsRadius="5dp"
         app:alliance_drawOnlyStroke="true"
-        app:alliance_firstDotsColor="#E91E63"
-        app:alliance_secondDotsColor="#FFEB3B"
+        app:alliance_firstDotsColor="#00daf8"
+        app:alliance_secondDotsColor="#00daf8"
         app:alliance_strokeWidth="8dp"
-        app:alliance_thirdDotsColor="#05EF0E" />
+        app:alliance_thirdDotsColor="#00daf8" />
 
 
 </RelativeLayout>

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/Todo_List/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/GitHub/Todo_List/app/src/main/res/layout/activity_splash_screen.xml" value="0.22447916666666667" />
+        <entry key="..\:/GitHub/Todo_List/app/src/main/res/layout/task.xml" value="0.22447916666666667" />
+        <entry key="..\:/GitHub/Todo_List/app/src/main/res/layout/task_layout.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.225" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable/ic_launcher_background.xml" value="0.225" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/activity_main.xml" value="0.2" />

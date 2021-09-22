@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00625a"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="120dp"
+        android:background="#00edff"
+        android:fontFamily="@font/roboto"
         android:text="Good Morning"
-        android:textColor="@color/purple_500"
-        android:textSize="34dp">
+        android:textColor="#00727a"
+        android:textSize="60sp">
 
     </TextView>
 
@@ -42,11 +45,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="37dp"
         android:layout_marginBottom="41dp"
-        android:backgroundTint="#03A9F4"
+        android:backgroundTint="#00aac5"
         android:rotationX="8"
         android:src="@drawable/ic_baseline_add_24"
-        android:tint="#ECE4E4"
-        app:rippleColor="#F6F1F1">
+        android:tint="#00aac5"
+        app:rippleColor="#00aac5">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </RelativeLayout>

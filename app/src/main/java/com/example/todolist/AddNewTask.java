@@ -111,9 +111,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
         });
 
         Calendar calendar=Calendar.getInstance();
-        int year=calendar.get(Calendar.YEAR);
-        int month=calendar.get(Calendar.MONTH);
-        int day=calendar.get(Calendar.DAY_OF_MONTH);
+        int year=calendar.get(Calendar.HOUR);
+        int month=calendar.get(Calendar.MINUTE);
+        int day=calendar.get(Calendar.AM_PM);
        // int time=calendar.get(Calendar.HOUR);
 
         date_picker.setOnClickListener(new View.OnClickListener() {
