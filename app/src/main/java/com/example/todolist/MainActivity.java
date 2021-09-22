@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         taskrecyclerview.setAdapter(taskdataAdapter);
 
         floatingActionButton=findViewById(R.id.floater);
+
+        ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new RecyclerItemTouchHelper(taskdataAdapter));
+        itemTouchHelper.attachToRecyclerView(taskrecyclerview);
+
         list=db.getAllTasks();
         Collections.reverse(list);
         taskdataAdapter.setTasks(list);
@@ -46,15 +51,15 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             }
         });
 
-        //checking
-        taskData_Class taskData_class=new taskData_Class();
-        taskData_class.setTask("This is the sample task");
-        taskData_class.setStatus(0);
-        taskData_class.setId(1);
-        taskData_class.setDate("no date fixed");
-        taskData_class.setWork("No work declared");
-        list.add(taskData_class);
-        taskdataAdapter.setTasks(list);
+//        //checking
+//        taskData_Class taskData_class=new taskData_Class();
+//        taskData_class.setTask("This is the sample task");
+//        taskData_class.setStatus(0);
+//        taskData_class.setId(1);
+//        taskData_class.setDate("no date fixed");
+//        taskData_class.setWork("No work declared");
+//        list.add(taskData_class);
+//        taskdataAdapter.setTasks(list);
     }
 
     @Override

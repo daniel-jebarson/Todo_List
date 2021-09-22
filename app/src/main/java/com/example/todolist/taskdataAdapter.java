@@ -12,21 +12,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHolder> {
     private List<taskData_Class> list;
     private MainActivity mainActivity;
     private database db;
+    private Context context;
+
     public taskdataAdapter(database db,MainActivity mainActivity) {
         this.db=db;
         this.mainActivity=mainActivity;
     }
 
-    public taskdataAdapter(MainActivity mainActivity) {
-
-    }
+//    public taskdataAdapter(MainActivity mainActivity) {
+//
+//    }
 
     @NonNull
     @Override
@@ -34,6 +35,18 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         View item=LayoutInflater.from(parent.getContext()).inflate(R.layout.task_layout,parent,false);
         return new ViewHolder(item);
     }
+
+
+
+//    public void setContext(Context context) {
+//        this.context = context;
+//    }
+    public Context getContext()
+    {
+        return mainActivity;
+    }
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
         CheckBox checking_box;
         TextView date_display;
@@ -47,7 +60,7 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         }
     }
     @Override
-    public void onBindViewHolder(@NonNull taskdataAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         db.openDatabase();
         taskData_Class item=list.get(position);
         holder.checking_box.setText(item.getTask());
@@ -72,11 +85,11 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
     private boolean toBoollean(int status) {
         if(status==0)
         {
-            return true;
+            return false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
     public void setTasks(List<taskData_Class> list){
@@ -94,6 +107,13 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         AddNewTask fragment =new AddNewTask();
         fragment.setArguments(bundle);
         fragment.show(mainActivity.getSupportFragmentManager(),AddNewTask.TAG);
+    }
+    public void deleteItem(int position)
+    {
+        taskData_Class item=list.get(position);
+        db.deleteTask(item.getId());
+        list.remove(position);
+        notifyItemRemoved(position);
     }
     @Override
     public int getItemCount() {
