@@ -50,11 +50,13 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder{
         CheckBox checking_box;
         TextView date_display;
+        TextView time_display;
         TextView my_work_description;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             checking_box=itemView.findViewById(R.id.checking_box);
             date_display=itemView.findViewById(R.id.date_display);
+            time_display=itemView.findViewById(R.id.time_display);
             my_work_description=itemView.findViewById(R.id.my_work_description);
 
         }
@@ -66,6 +68,7 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         holder.checking_box.setText(item.getTask());
         holder.checking_box.setChecked(toBoollean(item.getStatus()));
         holder.date_display.setText(item.getDate());
+        holder.time_display.setText(item.getTime());
         holder.my_work_description.setText(item.getWork());
         holder.checking_box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -103,6 +106,7 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         bundle.putInt("id",item.getId());
         bundle.putString("task",item.getTask());
         bundle.putString("date",item.getDate());
+        bundle.putString("time",item.getTime());
         bundle.putString("work",item.getWork());
         AddNewTask fragment =new AddNewTask();
         fragment.setArguments(bundle);

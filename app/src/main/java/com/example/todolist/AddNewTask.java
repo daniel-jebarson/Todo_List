@@ -2,6 +2,7 @@ package com.example.todolist;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,7 +36,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private EditText newTaskText;
     private Button newTaskSaveButton;
     private TextView date_picker;
+    private TextView time_picker;
     private TextView task_description;
+    TimePickerDialog timePickerDialog;
     DatePickerDialog.OnDateSetListener setListener;
     private database db;
 
@@ -66,6 +70,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         newTaskSaveButton = getView().findViewById(R.id.save);
         task_description=requireView().findViewById(R.id.task_description);
         date_picker=requireView().findViewById(R.id.date_picker);
+        time_picker=requireView().findViewById(R.id.time_picker);
         boolean isUpdate = false;
 
         final Bundle bundle = getArguments();
@@ -76,12 +81,15 @@ public class AddNewTask extends BottomSheetDialogFragment {
             //doubt
             String date = bundle.getString("date");
             date_picker.setText(date);
+            String time = bundle.getString("time");
+            time_picker.setText(time);
             String work = bundle.getString("work");
             task_description.setText(work);
             assert task != null;
             assert  date!=null;
             assert work!=null;
-            if(task.length()>0 && date.length()>0 && work.length()>0 )
+            assert  time!=null;
+            if(task.length()>0 && date.length()>0 && work.length()>0 && time.length()>0 )
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.design_default_color_primary_dark));
         }
 
@@ -110,10 +118,16 @@ public class AddNewTask extends BottomSheetDialogFragment {
             }
         });
 
+
+
+        ///code here
+
+
+
         Calendar calendar=Calendar.getInstance();
-        int year=calendar.get(Calendar.HOUR);
-        int month=calendar.get(Calendar.MINUTE);
-        int day=calendar.get(Calendar.AM_PM);
+        int year=calendar.get(Calendar.YEAR);
+        int month=calendar.get(Calendar.MONTH);
+        int day=calendar.get(Calendar.DAY_OF_MONTH);
        // int time=calendar.get(Calendar.HOUR);
 
         date_picker.setOnClickListener(new View.OnClickListener() {
@@ -132,6 +146,39 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 date_picker.setText(date);
             }
         };
+        time_picker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timePickerDialog=new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                        String am_pm;
+                        if(hour>12)
+                        {
+                            am_pm="PM";
+                            hour=hour-12;
+                        }
+                        else if (hour==0)
+                        {
+                            am_pm="AM";
+                            hour=hour+12;
+                        }
+                        else if(hour==12)
+                        {
+                            am_pm="PM";
+                        }
+                        else
+                        {
+                            am_pm="AM";
+                        }
+
+                        String time=hour + " : " +minute + " "+ am_pm;
+                        time_picker.setText(time);
+                    }
+                },0,0,false);
+                timePickerDialog.show();
+            }
+        });
 
 
 
@@ -141,11 +188,13 @@ public class AddNewTask extends BottomSheetDialogFragment {
             public void onClick(View v) {
                 String text = newTaskText.getText().toString();
                 String date=date_picker.getText().toString();
+                String time=time_picker.getText().toString();
                 String work=task_description.getText().toString();
 
                 if(finalIsUpdate){
                          db.updateTask(bundle.getInt("id"), text);
                         db.updateDate(bundle.getInt("id"), date);
+                        db.updateTime(bundle.getInt("id"),time);
                         db.updateWork(bundle.getInt("id"), work);
 
                 }
@@ -153,6 +202,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                    taskData_Class task = new taskData_Class();
                     task.setTask(text);
                     task.setDate(date);
+                    task.setTime(time);
                     task.setWork(work);
                     task.setStatus(0);
                     db.insertTask(task);

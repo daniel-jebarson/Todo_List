@@ -20,9 +20,10 @@ public class database extends SQLiteOpenHelper {
     private static final String TASK = "task";
     private static final String STATUS = "status";
     private static final String DATE = "date";
+    private static final String TIME = "time";
     private static final String WORK="work";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
-            + STATUS + " INTEGER, "+DATE+ " TEXT, "+WORK+ " TEXT)";
+            + STATUS + " INTEGER, "+DATE+ " TEXT, "+TIME+ " TEXT, "+WORK+ " TEXT)";
 
     private SQLiteDatabase db;
 
@@ -51,6 +52,7 @@ public class database extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(TASK, task.getTask());
         cv.put(DATE,task.getDate());
+        cv.put(TIME,task.getTime());
         cv.put(WORK,task.getWork());
         cv.put(STATUS, 0);
         db.insert(TODO_TABLE, null, cv);
@@ -71,6 +73,7 @@ public class database extends SQLiteOpenHelper {
                         task.setTask(cur.getString(cur.getColumnIndex(TASK)));
                         task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
                         task.setDate(cur.getString(cur.getColumnIndex(DATE)));
+                        task.setTime(cur.getString(cur.getColumnIndex(TIME)));
                         task.setWork(cur.getString(cur.getColumnIndex(WORK)));
                         taskList.add(task);
                     }
@@ -100,6 +103,11 @@ public class database extends SQLiteOpenHelper {
     public void updateDate(int id, String date) {
         ContentValues cv = new ContentValues();
         cv.put(DATE, date);
+        db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+    }
+    public void updateTime(int id, String time) {
+        ContentValues cv = new ContentValues();
+        cv.put(TIME, time);
         db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
     }
     public void updateWork(int id, String work) {

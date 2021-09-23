@@ -10,15 +10,16 @@
     <TextView
         android:id="@+id/welcome"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingTop="120dp"
         android:background="#00edff"
         android:fontFamily="@font/roboto"
-        android:text="Good Morning"
+        android:paddingTop="25dp"
+        android:paddingBottom="5dp"
+        android:text=""
+        android:autoSizeTextType="uniform"
         android:textColor="#00727a"
-        android:textSize="60sp">
+        android:textSize="53dp">
 
     </TextView>
 

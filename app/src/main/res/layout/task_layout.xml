@@ -37,19 +37,6 @@
         android:textStyle="bold">
 
     </TextView>
-    <TextView
-        android:id="@+id/my_work"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/due_date"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="15dp"
-        android:text="My work:"
-        android:textColor="#FF5722"
-        android:textSize="22dp"
-        android:textStyle="bold">
-
-    </TextView>
 
     <TextView
         android:id="@+id/date_display"
@@ -58,12 +45,53 @@
         android:layout_below="@id/checking_box"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="3dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="5dp"
         android:layout_toRightOf="@id/due_date"
         android:text=""
         android:textColor="@color/purple_200"
         android:textSize="22dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/due_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/due_date"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:text="Due Time:"
+        android:textColor="#FF9800"
+        android:textSize="22dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/time_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_display"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="16dp"
+        android:text="hello"
+        android:textColor="@color/purple_200"
+        android:textSize="22dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/my_work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/due_time"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:text="My work:"
+        android:textColor="#FF5722"
+        android:textSize="22dp"
+        android:textStyle="bold">
 
     </TextView>
 
