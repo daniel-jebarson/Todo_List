@@ -65,7 +65,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     DatePickerDialog.OnDateSetListener setListener;
     private database db;
 
-    public static AddNewTask newInstance(){
+    public static AddNewTask newInstance() {
         return new AddNewTask();
     }
 
@@ -92,15 +92,15 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated(view, savedInstanceState);
         newTaskText = requireView().findViewById(R.id.Task_title);
         newTaskSaveButton = getView().findViewById(R.id.save);
-        task_description=requireView().findViewById(R.id.task_description);
-        date_picker=requireView().findViewById(R.id.date_picker);
-        time_picker=requireView().findViewById(R.id.time_picker);
-        notify_date_picker=requireView().findViewById(R.id.notify_date_picker);
-        notify_picker=requireView().findViewById(R.id.notify_picker);
+        task_description = requireView().findViewById(R.id.task_description);
+        date_picker = requireView().findViewById(R.id.date_picker);
+        time_picker = requireView().findViewById(R.id.time_picker);
+        notify_date_picker = requireView().findViewById(R.id.notify_date_picker);
+        notify_picker = requireView().findViewById(R.id.notify_picker);
         boolean isUpdate = false;
 
         final Bundle bundle = getArguments();
-        if(bundle != null){
+        if (bundle != null) {
             isUpdate = true;
             String task = bundle.getString("task");
             newTaskText.setText(task);
@@ -109,19 +109,19 @@ public class AddNewTask extends BottomSheetDialogFragment {
             date_picker.setText(date);
             String time = bundle.getString("time");
             time_picker.setText(time);
-            String notify_date=bundle.getString("notify_date");
+            String notify_date = bundle.getString("notify_date");
             notify_date_picker.setText(notify_date);
-            String notify=bundle.getString("notify");
+            String notify = bundle.getString("notify");
             notify_picker.setText(notify);
             String work = bundle.getString("work");
             task_description.setText(work);
             assert task != null;
-            assert  date!=null;
-            assert work!=null;
-            assert  time!=null;
-            assert notify!=null;
-            assert notify_date!=null;
-            if(task.length()>0 && date.length()>0 && work.length()>0 && time.length()>0 && notify.length()>0 && notify_date.length()>0 )
+            assert date != null;
+            assert work != null;
+            assert time != null;
+            assert notify != null;
+            assert notify_date != null;
+            if (task.length() > 0 && date.length() > 0 && work.length() > 0 && time.length() > 0 && notify.length() > 0 && notify_date.length() > 0)
                 newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.design_default_color_primary_dark));
         }
 
@@ -135,11 +135,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.toString().equals("")){
+                if (s.toString().equals("")) {
                     newTaskSaveButton.setEnabled(false);
                     newTaskSaveButton.setTextColor(Color.GRAY);
-                }
-                else{
+                } else {
                     newTaskSaveButton.setEnabled(true);
                     newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.design_default_color_primary_dark));
                 }
@@ -151,26 +150,25 @@ public class AddNewTask extends BottomSheetDialogFragment {
         });
 
 
-
-        Calendar calendar=Calendar.getInstance();
-        int year=calendar.get(Calendar.YEAR);
-        int month=calendar.get(Calendar.MONTH);
-        int day=calendar.get(Calendar.DAY_OF_MONTH);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
         date_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        month=month+1;
-                        String date=day+"/"+month+"/"+year;
+                        month = month + 1;
+                        String date = day + "/" + month + "/" + year;
                         date_picker.setText(date);
                     }
-                },year,month,day
+                }, year, month, day
                 );
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
@@ -178,33 +176,26 @@ public class AddNewTask extends BottomSheetDialogFragment {
         time_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timePickerDialog=new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                         String am_pm;
-                        if(hour>12)
-                        {
-                            am_pm="pm";
-                            hour=hour-12;
-                        }
-                        else if (hour==0)
-                        {
-                            am_pm="am";
-                            hour=hour+12;
-                        }
-                        else if(hour==12)
-                        {
-                            am_pm="pm";
-                        }
-                        else
-                        {
-                            am_pm="am";
+                        if (hour > 12) {
+                            am_pm = "pm";
+                            hour = hour - 12;
+                        } else if (hour == 0) {
+                            am_pm = "am";
+                            hour = hour + 12;
+                        } else if (hour == 12) {
+                            am_pm = "pm";
+                        } else {
+                            am_pm = "am";
                         }
 
-                        String time=hour + ":" +minute + " "+ am_pm;
+                        String time = hour + ":" + minute + " " + am_pm;
                         time_picker.setText(time);
                     }
-                },0,0,false);
+                }, 0, 0, false);
                 timePickerDialog.show();
             }
         });
@@ -212,48 +203,41 @@ public class AddNewTask extends BottomSheetDialogFragment {
         notify_date_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerDialog datePickerDialog=new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        month=month+1;
-                        String date=day+"/"+month+"/"+year;
+                        month = month + 1;
+                        String date = day + "/" + month + "/" + year;
                         notify_date_picker.setText(date);
                     }
-                },year,month,day
+                }, year, month, day
                 );
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.show();
             }
         });
         notify_picker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timePickerDialog=new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                         String am_pm;
-                        if(hour>12)
-                        {
-                            am_pm="pm";
-                            hour=hour-12;
+                        if (hour > 12) {
+                            am_pm = "pm";
+                            hour = hour - 12;
+                        } else if (hour == 0) {
+                            am_pm = "am";
+                            hour = hour + 12;
+                        } else if (hour == 12) {
+                            am_pm = "pm";
+                        } else {
+                            am_pm = "am";
                         }
-                        else if (hour==0)
-                        {
-                            am_pm="am";
-                            hour=hour+12;
-                        }
-                        else if(hour==12)
-                        {
-                            am_pm="pm";
-                        }
-                        else
-                        {
-                            am_pm="am";
-                        }
-                        String time=hour + ":" +minute + " "+ am_pm;
+                        String time = hour + ":" + minute + " " + am_pm;
                         notify_picker.setText(time);
                     }
-                },0,0,false);
+                }, 0, 0, false);
                 timePickerDialog.show();
 
 
@@ -261,36 +245,36 @@ public class AddNewTask extends BottomSheetDialogFragment {
         });
 
 
-        //final boolean finalIsUpdate = isUpdate;
+        final boolean finalIsUpdate = isUpdate;
         newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-
-
+                
                 String text = newTaskText.getText().toString();
                 String date = date_picker.getText().toString();
                 String time = time_picker.getText().toString();
                 String notify_date = notify_date_picker.getText().toString();
                 String notify = notify_picker.getText().toString();
                 String work = task_description.getText().toString();
-                int date_len=date.length();
-                int  time_len=time.length();
-                int notify_date_len=notify_date.length();
-                int notify_len=notify.length();
-                return_millies_current(notify_date + " " + notify) < 0
-                
-                return_millies((notify_date + " " + notify), (date + " " + time)) < 0
-                if (text.length()==0)
+                int date_len = date.length();
+                int time_len = time.length();
+                int notify_date_len = notify_date.length();
+                int notify_len = notify.length();
+                //return_millies_current(notify_date + " " + notify) < 0;
+
+                //return_millies((notify_date + " " + notify), (date + " " + time)) < 0;
+                if (text.length() == 0)
                     Toast.makeText(getContext(), "You didn't entered the title", Toast.LENGTH_SHORT).show();
-                else if(date_len>0 && time_len>0)
-                {
-                    if(return_millies_current(date + " " + time) < 0)
-                        Toast.makeText(getContext(), "Specify the date and time properly", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-                //Not completed
+                else if((date_len>0 && time_len>0 && notify_date_len==0 && notify_len==0) || (date_len==0 && time_len==0 && notify_len>0 && notify_date_len>0) || (date_len>0 && time_len>0 && notify_date_len>0 && notify_len>0)) {
+                    if ((date_len > 0 && time_len > 0 && notify_date_len == 0 && notify_len == 0) && return_millies_current(date + " " + time) < 0)
+                        Toast.makeText(getContext(), "Enter proper due date and time", Toast.LENGTH_SHORT).show();
+                    else if ((date_len == 0 && time_len == 0 && notify_len > 0 && notify_date_len > 0) && return_millies_current(notify_date + " " + notify) < 0)
+                        Toast.makeText(getContext(), "Enter proper notification date and time", Toast.LENGTH_SHORT).show();
+                    else if ((date_len > 0 && time_len > 0 && notify_date_len > 0 && notify_len > 0) && (return_millies((notify_date + " " + notify), (date + " " + time)) < 0))
+                        Toast.makeText(getContext(), "Check your due date and notify date properly", Toast.LENGTH_SHORT).show();
+                    else {
+                        //Not completed
 //                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy h:m a");
 //                ZoneId zone = ZoneId.systemDefault();
 //                DateFormat dateFormat=new SimpleDateFormat("d/M/yyyy h:m a");
@@ -302,43 +286,53 @@ public class AddNewTask extends BottomSheetDialogFragment {
 //                System.out.println("Difference: " + diffSeconds + " seconds");
 
 
-                Toast.makeText(getContext(), "Remainder set successfully!", Toast.LENGTH_SHORT).show();
-                createNotificationChannel();
-                Intent intent = new Intent(getContext(), RemainderBroadcast.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
-                AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-                long timeButtonClick = System.currentTimeMillis();
-                long tenSecondsInMillis = 1000 * 10;
-                alarmManager.set(AlarmManager.RTC_WAKEUP, timeButtonClick + tenSecondsInMillis, pendingIntent);
+                        Toast.makeText(getContext(), "Remainder set successfully!", Toast.LENGTH_SHORT).show();
+                        createNotificationChannel();
+                        Intent intent = new Intent(getContext(), RemainderBroadcast.class);
+                        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
+                        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                        long timeButtonClick = System.currentTimeMillis();
+                        long tenSecondsInMillis = 1000 * 10;
+                        alarmManager.set(AlarmManager.RTC_WAKEUP, timeButtonClick + tenSecondsInMillis, pendingIntent);
 
-                if (finalIsUpdate) {
-                    db.updateTask(bundle.getInt("id"), text);
-                    db.updateDate(bundle.getInt("id"), date);
-                    db.updateTime(bundle.getInt("id"), time);
-                    db.updateNotify_date(bundle.getInt("id"), notify_date);
-                    db.updateNotify(bundle.getInt("id"), notify);
-                    db.updateWork(bundle.getInt("id"), work);
+                        if (finalIsUpdate) {
+                            db.updateTask(bundle.getInt("id"), text);
+                            db.updateDate(bundle.getInt("id"), date);
+                            db.updateTime(bundle.getInt("id"), time);
+                            db.updateNotify_date(bundle.getInt("id"), notify_date);
+                            db.updateNotify(bundle.getInt("id"), notify);
+                            db.updateWork(bundle.getInt("id"), work);
 
-                } else {
-                    taskData_Class task = new taskData_Class();
-                    task.setTask(text);
-                    task.setDate(date);
-                    task.setTime(time);
-                    task.setNotify_date(notify_date);
-                    task.setNotify(notify);
-                    task.setWork(work);
-                    task.setStatus(0);
-                    db.insertTask(task);
+                        } else {
+                            taskData_Class task = new taskData_Class();
+                            task.setTask(text);
+                            task.setDate(date);
+                            task.setTime(time);
+                            task.setNotify_date(notify_date);
+                            task.setNotify(notify);
+                            task.setWork(work);
+                            task.setStatus(0);
+                            db.insertTask(task);
+                        }
+                        dismiss();
+                    }
                 }
-                dismiss();
-            }
+                else
+                {
+                    if(date_len>0 && time_len>0)
+                        Toast.makeText(getContext(), "Check your notify date and time properly", Toast.LENGTH_SHORT).show();
+                    else if(notify_len > 0 && notify_date_len > 0)
+                        Toast.makeText(getContext(), "Check your due date and time properly", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(getContext(), "Check whether you entered correct values or not", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
     //trying
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public long return_millies(String startDateString ,String endDateString)
-    {
+    public long return_millies(String startDateString, String endDateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy h:m a");
         ZoneId zone = ZoneId.systemDefault();
 //        DateFormat dateFormat=new SimpleDateFormat("d/M/yyyy h:m a");
@@ -346,89 +340,41 @@ public class AddNewTask extends BottomSheetDialogFragment {
 //        String endDateString = "24/9/2021 5:44 pm";
         ZonedDateTime start = LocalDateTime.parse(startDateString, formatter).atZone(zone);
         ZonedDateTime end = LocalDateTime.parse(endDateString, formatter).atZone(zone);
-        return (ChronoUnit.SECONDS.between(start, end)*1000);
+        return (ChronoUnit.SECONDS.between(start, end) * 1000);
 
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public long return_millies_current(String endDateString)
-    {
+    public long return_millies_current(String endDateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy h:m a");
         ZoneId zone = ZoneId.systemDefault();
-        DateFormat dateFormat=new SimpleDateFormat("d/M/yyyy h:m a");
-        String startDateString=dateFormat.format(new Date()).toString();
+        DateFormat dateFormat = new SimpleDateFormat("d/M/yyyy h:m a");
+        String startDateString = dateFormat.format(new Date()).toString();
 //        String endDateString = "24/9/2021 5:44 pm";
         ZonedDateTime start = LocalDateTime.parse(startDateString, formatter).atZone(zone);
         ZonedDateTime end = LocalDateTime.parse(endDateString, formatter).atZone(zone);
         long diffSeconds = ChronoUnit.SECONDS.between(start, end);
         System.out.println(diffSeconds);
-        return (diffSeconds*1000);
+        return (diffSeconds * 1000);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public void createNotificationChannel()
-    {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE)
-        {
-            CharSequence name="This is Name";
-            String description="This is description";
-            int importance= NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel=new NotificationChannel("notifyid",name,importance);
+    public void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE) {
+            CharSequence name = "This is Name";
+            String description = "This is description";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifyid", name, importance);
             channel.setDescription(description);
-            NotificationManager notificationManager= getActivity().getSystemService(NotificationManager.class);
+            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
     }
 
     @Override
-    public void onDismiss(@NonNull DialogInterface dialog){
+    public void onDismiss(@NonNull DialogInterface dialog) {
         Activity activity = getActivity();
-        if(activity instanceof DialogCloseListener)
-            ((DialogCloseListener)activity).handleDialogClose(dialog);
-    }
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    final boolean finalIsUpdate = false;
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void push_notification()
-    {
-        Bundle  bundle;
-        String text = newTaskText.getText().toString();
-        String date = date_picker.getText().toString();
-        String time = time_picker.getText().toString();
-        String notify_date = notify_date_picker.getText().toString();
-        String notify = notify_picker.getText().toString();
-        String work = task_description.getText().toString();
-
-        Toast.makeText(getContext(), "Remainder set successfully!", Toast.LENGTH_SHORT).show();
-        createNotificationChannel();
-        Intent intent = new Intent(getContext(), RemainderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-        long timeButtonClick = System.currentTimeMillis();
-        long tenSecondsInMillis = 1000 * 10;
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timeButtonClick + tenSecondsInMillis, pendingIntent);
-
-        if (finalIsUpdate) {
-
-            db.updateTask(bundle.getInt("id"), text);
-            db.updateDate(bundle.getInt("id"), date);
-            db.updateTime(bundle.getInt("id"), time);
-            db.updateNotify_date(bundle.getInt("id"), notify_date);
-            db.updateNotify(bundle.getInt("id"), notify);
-            db.updateWork(bundle.getInt("id"), work);
-
-        } else {
-            taskData_Class task = new taskData_Class();
-            task.setTask(text);
-            task.setDate(date);
-            task.setTime(time);
-            task.setNotify_date(notify_date);
-            task.setNotify(notify);
-            task.setWork(work);
-            task.setStatus(0);
-            db.insertTask(task);
-        }
-        dismiss();
-    }
+        if (activity instanceof DialogCloseListener)
+            ((DialogCloseListener) activity).handleDialogClose(dialog);
     }
 }
