@@ -21,9 +21,11 @@ public class database extends SQLiteOpenHelper {
     private static final String STATUS = "status";
     private static final String DATE = "date";
     private static final String TIME = "time";
+    private static final String NOTIFY_DATE="notify_date";
+    private static final String NOTIFY = "notify";
     private static final String WORK="work";
     private static final String CREATE_TODO_TABLE = "CREATE TABLE " + TODO_TABLE + "(" + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TASK + " TEXT, "
-            + STATUS + " INTEGER, "+DATE+ " TEXT, "+TIME+ " TEXT, "+WORK+ " TEXT)";
+            + STATUS + " INTEGER, "+DATE+ " TEXT, "+TIME+ " TEXT, "+NOTIFY_DATE+ " TEXT, " +NOTIFY+" TEXT, "+WORK+ " TEXT)";
 
     private SQLiteDatabase db;
 
@@ -53,6 +55,8 @@ public class database extends SQLiteOpenHelper {
         cv.put(TASK, task.getTask());
         cv.put(DATE,task.getDate());
         cv.put(TIME,task.getTime());
+        cv.put(NOTIFY_DATE,task.getNotify_date());
+        cv.put(NOTIFY,task.getNotify());
         cv.put(WORK,task.getWork());
         cv.put(STATUS, 0);
         db.insert(TODO_TABLE, null, cv);
@@ -74,6 +78,8 @@ public class database extends SQLiteOpenHelper {
                         task.setStatus(cur.getInt(cur.getColumnIndex(STATUS)));
                         task.setDate(cur.getString(cur.getColumnIndex(DATE)));
                         task.setTime(cur.getString(cur.getColumnIndex(TIME)));
+                        task.setNotify_date(cur.getString(cur.getColumnIndex(NOTIFY_DATE)));
+                        task.setNotify(cur.getString(cur.getColumnIndex(NOTIFY)));
                         task.setWork(cur.getString(cur.getColumnIndex(WORK)));
                         taskList.add(task);
                     }
@@ -109,6 +115,18 @@ public class database extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(TIME, time);
         db.update(TODO_TABLE, cv, ID + "= ?", new String[] {String.valueOf(id)});
+    }
+    public void updateNotify_date(int id,String notify_date)
+    {
+        ContentValues cv=new ContentValues();
+        cv.put(NOTIFY_DATE,notify_date);
+        db.update(TODO_TABLE,cv,ID +"=?",new String[] {String.valueOf(id)});
+    }
+    public void updateNotify(int id,String notify)
+    {
+        ContentValues cv=new ContentValues();
+        cv.put(NOTIFY,notify);
+        db.update(TODO_TABLE,cv,ID + "=?",new String[] {String.valueOf(id)});
     }
     public void updateWork(int id, String work) {
         ContentValues cv = new ContentValues();

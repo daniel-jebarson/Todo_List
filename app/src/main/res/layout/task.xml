@@ -11,7 +11,7 @@
         android:hint="Type your task here"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20sp">
+        android:textSize="20dp">
 
     </EditText>
 
@@ -31,7 +31,7 @@
         android:paddingEnd="5dp"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20sp">
+        android:textSize="20dp">
 
     </TextView>
 
@@ -49,11 +49,39 @@
 
     </TextView>
 
+    <TextView
+        android:id="@+id/notify_date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_picker"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_baseline_alarm_24"
+        android:hint="Enter the notification date"
+        android:textColor="#00aac5"
+        android:textColorHint="#0096ab"
+        android:textSize="20dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/notify_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notify_date_picker"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_baseline_alarm_24"
+        android:hint="Enter the notification time"
+        android:textColor="#00aac5"
+        android:textColorHint="#0096ab"
+        android:textSize="20dp">
+
+    </TextView>
+
     <EditText
         android:id="@+id/task_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/time_picker"
+        android:layout_below="@id/notify_picker"
         android:layout_marginTop="10dp"
         android:hint="Type your task details here"
         android:textColor="#00aac5"

@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:autoSizeTextType="uniform"
         android:background="#00edff"
         android:fontFamily="@font/roboto"
         android:paddingTop="25dp"
         android:paddingBottom="5dp"
         android:text=""
-        android:autoSizeTextType="uniform"
         android:textColor="#00727a"
-        android:textSize="53dp">
+        android:textSize="50dp">
 
     </TextView>
 

@@ -1,10 +1,12 @@
 package com.example.todolist;
 
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private List<taskData_Class> list;
     private database db;
     private TextView welcome;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 //        taskData_class.setId(1);
 //        taskData_class.setDate("no date fixed");
 //        taskData_class.setTime("No time fixed");
+//        taskData_class.setNotify("Notify time not set");
 //        taskData_class.setWork("No work declared");
 //        list.add(taskData_class);
 //        taskdataAdapter.setTasks(list);
@@ -89,4 +94,5 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         taskdataAdapter.setTasks(list);
         taskdataAdapter.notifyDataSetChanged();
     }
+
 }

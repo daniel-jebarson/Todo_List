@@ -51,12 +51,16 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         CheckBox checking_box;
         TextView date_display;
         TextView time_display;
+        TextView notify_date_display;
+        TextView notify_display;
         TextView my_work_description;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             checking_box=itemView.findViewById(R.id.checking_box);
             date_display=itemView.findViewById(R.id.date_display);
             time_display=itemView.findViewById(R.id.time_display);
+            notify_date_display=itemView.findViewById(R.id.notify_date_display);
+            notify_display=itemView.findViewById(R.id.notify_display);
             my_work_description=itemView.findViewById(R.id.my_work_description);
 
         }
@@ -69,6 +73,8 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         holder.checking_box.setChecked(toBoollean(item.getStatus()));
         holder.date_display.setText(item.getDate());
         holder.time_display.setText(item.getTime());
+        holder.notify_date_display.setText(item.getNotify_date());
+        holder.notify_display.setText(item.getNotify());
         holder.my_work_description.setText(item.getWork());
         holder.checking_box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -107,6 +113,8 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
         bundle.putString("task",item.getTask());
         bundle.putString("date",item.getDate());
         bundle.putString("time",item.getTime());
+        bundle.putString("notify_date", item.getNotify_date());
+        bundle.putString("notify",item.getNotify());
         bundle.putString("work",item.getWork());
         AddNewTask fragment =new AddNewTask();
         fragment.setArguments(bundle);

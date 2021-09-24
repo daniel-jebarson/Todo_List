@@ -75,9 +75,61 @@
         android:layout_below="@id/date_display"
         android:layout_marginStart="135dp"
         android:layout_marginTop="16dp"
-        android:text="hello"
+        android:text=""
         android:textColor="@color/purple_200"
         android:textSize="22dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/notify_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/due_time"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:text="Remainder date:"
+        android:textColor="#FF9800"
+        android:textSize="22dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/notify_date_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time_display"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textColor="@color/purple_200"
+        android:textSize="20dp"></TextView>
+
+    <TextView
+        android:id="@+id/notify_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notify_date"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:text="Remainder time:"
+        android:textColor="#FF9800"
+        android:textSize="22dp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/notify_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notify_date_display"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textColor="@color/purple_200"
+        android:textSize="20dp">
 
     </TextView>
 
@@ -85,7 +137,7 @@
         android:id="@+id/my_work"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/due_time"
+        android:layout_below="@id/notify_time"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
         android:text="My work:"

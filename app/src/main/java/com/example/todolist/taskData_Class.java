@@ -1,7 +1,7 @@
 package com.example.todolist;
 
 public class taskData_Class {
-    private String task,date,work,time;
+    private String task,date,work,time,notify_date,notify;
     private int id,status;
 
 
@@ -37,6 +37,14 @@ public class taskData_Class {
         this.time = time;
     }
 
+    public String getNotify() {
+        return notify;
+    }
+
+    public void setNotify(String notify) {
+        this.notify = notify;
+    }
+
     public int getId() {
         return id;
     }
@@ -51,5 +59,13 @@ public class taskData_Class {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getNotify_date() {
+        return notify_date;
+    }
+
+    public void setNotify_date(String notify_date) {
+        this.notify_date = notify_date;
     }
 }
