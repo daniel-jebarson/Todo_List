@@ -2,6 +2,8 @@ package com.example.todolist;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +19,7 @@ public class RemainderBroadcast extends BroadcastReceiver {
     private static String title,work;
     @Override
     public void onReceive(Context context, Intent intent) {
-
-
-
+    //tryimng
         title=intent.getStringExtra("title");
         work=intent.getStringExtra("work");
         NotificationCompat.Builder notification=new NotificationCompat.Builder(context,"notify")

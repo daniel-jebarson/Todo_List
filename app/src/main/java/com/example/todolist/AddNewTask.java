@@ -70,7 +70,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private TextView notify_date_picker;
     private TextView notify_picker;
     private TextView task_description;
-    private static ArrayList<PendingIntent> intentArray = new ArrayList<>();
+//    private static ArrayList<PendingIntent> intentArray = new ArrayList<>();
     TimePickerDialog timePickerDialog;
     DatePickerDialog.OnDateSetListener setListener;
     private database db;
@@ -286,6 +286,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                         //working
                         if(notify_len>0 && notify_date_len>0) {
                             createNotificationChannel();
+                            ArrayList<PendingIntent> intentArray = new ArrayList<>();
                             AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
                             long timeButtonClick = System.currentTimeMillis();
 //                            ArrayList<PendingIntent> intentArray = new ArrayList<>();
