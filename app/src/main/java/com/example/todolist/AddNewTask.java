@@ -62,7 +62,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
     public static final String TAG = "ActionBottomDialog";
     private static int n=0;
-    ArrayList<String> id_derived=new ArrayList<String>();
+//    ArrayList<String> id_derived=new ArrayList<String>();
     private EditText newTaskText;
     private Button newTaskSaveButton;
     private TextView date_picker;
@@ -359,16 +359,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
             }
         });
     }
-    private Notification getNotification(String rocketName, String padName) {
-        Notification.Builder builder = new Notification.Builder(getContext());
-        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, new Intent(getContext(), MainActivity.class), 0);
-        builder.setContentIntent(pendingIntent);
-        builder.setContentTitle("Upcoming Launch");
-        builder.setContentText("A launch of a " + rocketName + " is about to occur at " + padName + ". Click for more info.");
-        builder.setSmallIcon(R.drawable.ic_baseline_add_alert_24);
-        return builder.build();
-    }
-    //trying
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public long return_millies(String startDateString, String endDateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy h:m a");

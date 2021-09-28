@@ -19,12 +19,7 @@ public class RemainderBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
 
 
-//        System.out.println(x);
-//        NotificationCompat.Builder notification=new NotificationCompat.Builder(context,"notify")
-//                .setSmallIcon(R.drawable.ic_baseline_add_alert_24)
-//                .setContentTitle("hi there")
-//                .setContentText("Think this is the time you asked us to remaind")
-//                .setPriority(NotificationCompat.PRIORITY_HIGH);
+
         title=intent.getStringExtra("title");
         work=intent.getStringExtra("work");
         NotificationCompat.Builder notification=new NotificationCompat.Builder(context,"notify")
