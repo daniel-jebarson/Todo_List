@@ -1,6 +1,8 @@
 package com.example.todolist;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements DialogCloseListener {
     private RecyclerView taskrecyclerview;
     private FloatingActionButton floatingActionButton;
+    private FloatingActionButton stopwatch;
     private taskdataAdapter taskdataAdapter;
     private List<taskData_Class> list;
     private database db;
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         taskrecyclerview.setAdapter(taskdataAdapter);
 
         floatingActionButton=findViewById(R.id.floater);
+        stopwatch=findViewById(R.id.stopwatch);
 
         ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new RecyclerItemTouchHelper(taskdataAdapter));
         itemTouchHelper.attachToRecyclerView(taskrecyclerview);
@@ -70,6 +74,14 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             @Override
             public void onClick(View view) {
                 AddNewTask.newInstance().show(getSupportFragmentManager(),AddNewTask.TAG);
+
+            }
+        });
+        stopwatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,AddStopWatch.class);
+                startActivity(intent);
 
             }
         });

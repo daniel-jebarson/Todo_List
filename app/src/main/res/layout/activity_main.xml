@@ -53,4 +53,21 @@
         app:rippleColor="#00aac5">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/stopwatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="117dp"
+        android:backgroundTint="#00aac5"
+        android:rotationX="8"
+        android:src="@drawable/ic_baseline_alarm_24"
+        android:tint="#00aac5"
+        app:rippleColor="#00aac5">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 </RelativeLayout>

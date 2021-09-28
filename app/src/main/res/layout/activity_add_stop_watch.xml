@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddStopWatch">
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:textColor="#03A9F4"
+        android:textSize="45dp"
+        android:textStyle="bold" >
+
+    </Chronometer>
+    <Button
+        android:id="@+id/starttimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chronometer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="start"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/colorPrimaryDark">
+
+    </Button>
+    <Button
+        android:id="@+id/resettimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/starttimer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="reset"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:backgroundTint="#FFEB3B">
+
+    </Button>
+    <Button
+        android:id="@+id/stoptimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resettimer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="stop"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:backgroundTint="#E91E63">
+
+    </Button>
+
+    <Button
+        android:id="@+id/backtomain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stoptimer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#9C27B0"
+        android:text="Back to task list"
+        android:textColor="@color/black"
+        android:textStyle="bold">
+
+    </Button>
+
+
+
+</RelativeLayout>

@@ -2,18 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.todolist">
 
-    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY">
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"></uses-permission>
+    <uses-permission android:name="android.permission.SET_ALARM"></uses-permission>
 
-    </uses-permission>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED">
-
-    </uses-permission>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM">
-
-    </uses-permission>
-    <uses-permission android:name="android.permission.SET_ALARM">
-
-    </uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_baseline_calendar_today_24"
@@ -21,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TodoList">
-
+        <activity
+            android:name=".AddStopWatch"
+            android:exported="true" />
         <activity
             android:name=".Splash_screen"
             android:exported="true">
@@ -33,10 +28,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-        <receiver android:name=".RemainderBroadcast"> </receiver>
-    </application>
+            android:exported="true"></activity>
 
+        <receiver android:name=".RemainderBroadcast"></receiver>
+    </application>
 
 </manifest>
