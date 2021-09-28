@@ -1,8 +1,11 @@
 package com.example.todolist;
 
+import static android.content.Context.ALARM_SERVICE;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,8 +18,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.provider.AlarmClock;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,26 +40,29 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.todolist.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 
-import java.lang.reflect.Array;
-import java.security.Provider;
+import java.io.ObjectInputStream;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
+import java.util.Random;
+
 
 public class AddNewTask extends BottomSheetDialogFragment {
 
     public static final String TAG = "ActionBottomDialog";
+    private static int n=0;
+    ArrayList<String> id_derived=new ArrayList<String>();
     private EditText newTaskText;
     private Button newTaskSaveButton;
     private TextView date_picker;
@@ -61,6 +70,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private TextView notify_date_picker;
     private TextView notify_picker;
     private TextView task_description;
+    private static ArrayList<PendingIntent> intentArray = new ArrayList<>();
     TimePickerDialog timePickerDialog;
     DatePickerDialog.OnDateSetListener setListener;
     private database db;
@@ -261,12 +271,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 int time_len = time.length();
                 int notify_date_len = notify_date.length();
                 int notify_len = notify.length();
-                //return_millies_current(notify_date + " " + notify) < 0;
-
-                //return_millies((notify_date + " " + notify), (date + " " + time)) < 0;
+                int work_len=work.length();
                 if (text.length() == 0)
                     Toast.makeText(getContext(), "You didn't entered the title", Toast.LENGTH_SHORT).show();
-                else if((date_len>0 && time_len>0 && notify_date_len==0 && notify_len==0) || (date_len==0 && time_len==0 && notify_len>0 && notify_date_len>0) || (date_len>0 && time_len>0 && notify_date_len>0 && notify_len>0)) {
+                else if((date_len==0 && time_len==0 && notify_date_len==0 &&notify_len==0)||(date_len>0 && time_len>0 && notify_date_len==0 && notify_len==0) || (date_len==0 && time_len==0 && notify_len>0 && notify_date_len>0) || (date_len>0 && time_len>0 && notify_date_len>0 && notify_len>0)) {
                     if ((date_len > 0 && time_len > 0 && notify_date_len == 0 && notify_len == 0) && return_millies_current(date + " " + time) < 0)
                         Toast.makeText(getContext(), "Enter proper due date and time", Toast.LENGTH_SHORT).show();
                     else if ((date_len == 0 && time_len == 0 && notify_len > 0 && notify_date_len > 0) && return_millies_current(notify_date + " " + notify) < 0)
@@ -274,29 +282,44 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     else if ((date_len > 0 && time_len > 0 && notify_date_len > 0 && notify_len > 0) && (return_millies((notify_date + " " + notify), (date + " " + time)) < 0))
                         Toast.makeText(getContext(), "Check your due date and notify date properly", Toast.LENGTH_SHORT).show();
                     else {
-                        //Not completed
-//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy h:m a");
-//                ZoneId zone = ZoneId.systemDefault();
-//                DateFormat dateFormat=new SimpleDateFormat("d/M/yyyy h:m a");
-//                String startDateString=dateFormat.format(new Date()).toString();
-//                String endDateString = "24/9/2021 5:44 pm";
-//                ZonedDateTime start = LocalDateTime.parse(startDateString, formatter).atZone(zone);
-//                ZonedDateTime end = LocalDateTime.parse(endDateString, formatter).atZone(zone);
-//                long diffSeconds = ChronoUnit.SECONDS.between(start, end);
-//                System.out.println("Difference: " + diffSeconds + " seconds");
+
+                        //working
+                        if(notify_len>0 && notify_date_len>0) {
+                            createNotificationChannel();
+                            AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+                            long timeButtonClick = System.currentTimeMillis();
+//                            ArrayList<PendingIntent> intentArray = new ArrayList<>();
+                            String works;
+                            if(work_len==0)
+                                works="No work specified";
+                            else
+                                works=work;
+                            Intent intent = new Intent(getContext(), RemainderBroadcast.class);
+                            intent.putExtra("title",text);
+                            intent.putExtra("work",works);
+                            // Loop counter `i` is used as a `requestCode`
+                            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), n, intent, 0);
+                            // Single alarms in 1, 2, ..., 10 minutes (in `i` minutes)
+//                            alarmManager.set(AlarmManager.RTC_WAKEUP,
+//                                    System.currentTimeMillis()+10000 * i,
+//                                    pendingIntent);
+                            long tenSecondsInMillis = return_millies_current(notify_date + " " + notify);
+                            // tenSecondsInMillis=This is the time of the notification to be fired
+                            alarmManager.set(AlarmManager.RTC_WAKEUP, timeButtonClick + tenSecondsInMillis, pendingIntent);
+                            intentArray.add(pendingIntent);
+                            n = n + 1;
+//                        System.out.println(n);
+                            Toast.makeText(getContext(), "Remainder set successfully!", Toast.LENGTH_SHORT).show();
+                        }
 
 
-                        Toast.makeText(getContext(), "Remainder set successfully!", Toast.LENGTH_SHORT).show();
-                        createNotificationChannel();
-                        Intent intent = new Intent(getContext(), RemainderBroadcast.class);
-                        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 0, intent, 0);
-                        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-                        long timeButtonClick = System.currentTimeMillis();
-                        long tenSecondsInMillis = 1000 * 10;
-                        alarmManager.set(AlarmManager.RTC_WAKEUP, timeButtonClick + tenSecondsInMillis, pendingIntent);
+
 
                         if (finalIsUpdate) {
+
                             db.updateTask(bundle.getInt("id"), text);
+//                            Log.d("sam doubtr", String.valueOf(bundle.getInt("id")));
+
                             db.updateDate(bundle.getInt("id"), date);
                             db.updateTime(bundle.getInt("id"), time);
                             db.updateNotify_date(bundle.getInt("id"), notify_date);
@@ -305,7 +328,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
                         } else {
                             taskData_Class task = new taskData_Class();
+
+
                             task.setTask(text);
+                           // Log.d("sample programming", String.valueOf((task.getId())));
                             task.setDate(date);
                             task.setTime(time);
                             task.setNotify_date(notify_date);
@@ -313,6 +339,10 @@ public class AddNewTask extends BottomSheetDialogFragment {
                             task.setWork(work);
                             task.setStatus(0);
                             db.insertTask(task);
+                           // error
+                            // Log.d("sam skills", String.valueOf(db.LASTTASK.getId()));
+                            //Log.d("cheking idea", String.valueOf(db.id_taken));
+                            System.out.println(db.LASTTASK);
                         }
                         dismiss();
                     }
@@ -324,12 +354,20 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     else if(notify_len > 0 && notify_date_len > 0)
                         Toast.makeText(getContext(), "Check your due date and time properly", Toast.LENGTH_SHORT).show();
                     else
-                        Toast.makeText(getContext(), "Check whether you entered correct values or not", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Check whether you entered correct value or not", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
+    private Notification getNotification(String rocketName, String padName) {
+        Notification.Builder builder = new Notification.Builder(getContext());
+        PendingIntent pendingIntent = PendingIntent.getActivity(getContext(), 0, new Intent(getContext(), MainActivity.class), 0);
+        builder.setContentIntent(pendingIntent);
+        builder.setContentTitle("Upcoming Launch");
+        builder.setContentText("A launch of a " + rocketName + " is about to occur at " + padName + ". Click for more info.");
+        builder.setSmallIcon(R.drawable.ic_baseline_add_alert_24);
+        return builder.build();
+    }
     //trying
     @RequiresApi(api = Build.VERSION_CODES.O)
     public long return_millies(String startDateString, String endDateString) {
@@ -363,8 +401,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE) {
             CharSequence name = "This is Name";
             String description = "This is description";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel("notifyid", name, importance);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("notify", name, importance);
             channel.setDescription(description);
             NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
