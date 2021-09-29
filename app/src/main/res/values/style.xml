@@ -4,5 +4,55 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bgc">#00625a</item>
+        <item name="colorPrimary">#03A9F4</item>
+        <item name="colorPrimaryDark">#0A6EBD</item>
+        <item name="colorAccent">#E91E63</item>
+        <item name="tC">#000000</item>
     </style>
+    <style name="DialogDarkTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bgc">#000000</item>
+        <item name="tC">#000000</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#000000</item>
+    </style>
+    <style name="Apptheme">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bgc">#00625a</item>
+        <item name="colorPrimary">#03A9F4</item>
+        <item name="colorPrimaryDark">#0A6EBD</item>
+        <item name="colorAccent">#E91E63</item>
+        <item name="tC">#000000</item>
+        <item name="welcome">#00edff</item>
+        <item name="task">#97f4fe</item>
+        <item name="task_layout1">#4285F4</item>
+        <item name="task_layout2">#DB4437</item>
+        <item name="task_layout3">#F4B400</item>
+        <item name="task_layout4">#0F9D58</item>
+
+
+    </style>
+    <style name="DarkTheme" >
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bgc">#000000</item>
+        <item name="tC">#000000</item>
+        <item name="colorPrimary">#000000</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">#000000</item>
+        <item name="welcome">#000000</item>
+        <item name="task">#000000</item>
+        <item name="task_layout1">#000000</item>
+        <item name="task_layout2">#000000</item>
+        <item name="task_layout3">#000000</item>
+        <item name="task_layout4">#000000</item>
+    </style>
+
 </resources>

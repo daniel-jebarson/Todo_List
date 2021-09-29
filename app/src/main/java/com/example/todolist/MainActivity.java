@@ -1,19 +1,28 @@
 package com.example.todolist;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -31,13 +40,36 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private List<taskData_Class> list;
     private database db;
     private TextView welcome;
-
-
+    private FloatingActionButton mode;
+    private MenuItem light_mode,dark_mode;
+//added
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
+        {
+            setTheme(R.style.DarkTheme);
+        }
+        else
+        {
+            setTheme(R.style.Apptheme);
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+        light_mode=findViewById(R.id.light_mode);
+        dark_mode=findViewById(R.id.dark_mode);
+//        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
+//        {
+//            dark_mode.setChecked(true);
+//        }
         //WELCOMING
         welcome=findViewById(R.id.welcome);
         Calendar calendar=Calendar.getInstance();
@@ -62,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
 
         floatingActionButton=findViewById(R.id.floater);
         stopwatch=findViewById(R.id.stopwatch);
-
+        mode=findViewById(R.id.mode);
         ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new RecyclerItemTouchHelper(taskdataAdapter));
         itemTouchHelper.attachToRecyclerView(taskrecyclerview);
 
@@ -86,6 +118,48 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             }
         });
 
+        mode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu=new PopupMenu(MainActivity.this,mode);
+                popupMenu.getMenuInflater().inflate(R.menu.menu,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch (menuItem.getItemId())
+                        {
+                            case R.id.light_mode:
+                            {
+                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                                Toast.makeText(getApplicationContext(), "Switched to light mode", Toast.LENGTH_SHORT).show();
+                                return true;
+                            }
+                            case R.id.dark_mode:
+                            {
+                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                                Toast.makeText(getApplicationContext(), "Switched to dark mode", Toast.LENGTH_SHORT).show();
+                                reset();
+                                return  true;
+                            }
+                            default:
+                            {
+//                                Toast.makeText(getApplicationContext(), "Nothing worked", Toast.LENGTH_SHORT).show();
+                                return true;
+                            }
+                        }
+                    }
+                });
+                popupMenu.show();
+            }
+
+            private void reset() {
+                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
         //checking
 //        taskData_Class taskData_class=new taskData_Class();
 //        taskData_class.setTask("This is the sample task");
@@ -106,5 +180,23 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         taskdataAdapter.setTasks(list);
         taskdataAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Confirm exit?")
+                .setMessage("Are you sure?")
+                .setIcon(R.drawable.ic_baseline_exit_to_app_24)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        MainActivity.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton("Cancel",null);
+        AlertDialog alertDialog= builder.create();
+        alertDialog.show();
+    }
+
 
 }

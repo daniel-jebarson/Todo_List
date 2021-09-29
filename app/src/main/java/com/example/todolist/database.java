@@ -90,7 +90,7 @@ public class database extends SQLiteOpenHelper {
                         taskData_Class task = new taskData_Class();
                         // Log.d("checking id_number", String.valueOf(cur.getInt(cur.getColumnIndex(ID))));
                         id.add(cur.getString(cur.getColumnIndex(ID)));
-                        Log.d("checking id_number", String.valueOf(id));
+                       //works Log.d("checking id_number", String.valueOf(id));
 
 
 

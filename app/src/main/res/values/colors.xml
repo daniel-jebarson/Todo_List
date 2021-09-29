@@ -7,5 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimaryDark">#39EF40</color>
+    <color name="bgc">#00625a</color>
+    <color name="welcome">#00edff</color>
+    <color name="task">#97f4fe</color>
+    <color name="colorPrimary">#03A9F4</color>
+    <color name="colorPrimaryDark">#0A6EBD</color>
+    <color name="colorAccent">#E91E63</color>
+    <color name="task_layout1"> #4285F4</color>
+    <color name="task_layout2">#DB4437</color>
+    <color name="task_layout3">#F4B400</color>
+    <color name="task_layout4"> #0F9D58</color>
+
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00625a"
+    android:background="?attr/bgc"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:autoSizeTextType="uniform"
-        android:background="#00edff"
+        android:background="?attr/welcome"
         android:fontFamily="@font/roboto"
         android:paddingTop="25dp"
         android:paddingBottom="5dp"
@@ -28,10 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/welcome"
-
         android:layout_alignParentEnd="true"
         android:layout_marginTop="-3dp"
         android:layout_marginEnd="-6dp"
+        android:background="?attr/bgc"
         android:nestedScrollingEnabled="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
@@ -70,4 +70,22 @@
         app:rippleColor="#00aac5">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="41dp"
+        android:backgroundTint="#00aac5"
+        android:rotationX="8"
+        android:src="@drawable/ic_baseline_menu_24"
+        android:tint="#00aac5"
+        app:rippleColor="#00aac5">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 </RelativeLayout>

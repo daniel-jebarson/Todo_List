@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="dt">
+        <attr name="bgc" format="color">
+        </attr>
+        <attr name="tC" format="color">
+
+        </attr>
+        <attr name="welcome" format="color">
+
+        </attr>
+        <attr name="task" format="color">
+
+        </attr>
+        <attr name="task_layout1" format="color">
+
+        </attr>
+        <attr name="task_layout2" format="color">
+
+        </attr>
+        <attr name="task_layout3" format="color">
+
+        </attr>
+        <attr name="task_layout4" format="color">
+
+        </attr>
+    </declare-styleable>
+</resources>

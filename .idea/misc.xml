@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2351851851851852" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable/blue_grad.xml" value="0.2703125" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable/custom_button.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.2703125" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.225" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.2703125" />
@@ -14,6 +17,19 @@
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/activity_splash_screen.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task.xml" value="0.264" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout10.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout11.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout12.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout2.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout3.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout4.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout5.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout6.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout7.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout8.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/layout/task_layout9.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Lenovo/AndroidStudioProjects/Todolist/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
       </map>
     </option>

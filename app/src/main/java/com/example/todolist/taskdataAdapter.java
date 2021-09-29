@@ -1,7 +1,10 @@
 package com.example.todolist;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +13,10 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHolder> {
@@ -19,28 +24,23 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
     private MainActivity mainActivity;
     private database db;
     private Context context;
-
+    private static int x=0;
+    private static  int[] y={2131492981, 2131492982, 2131492983, 2131492984};
     public taskdataAdapter(database db,MainActivity mainActivity) {
         this.db=db;
         this.mainActivity=mainActivity;
     }
 
-//    public taskdataAdapter(MainActivity mainActivity) {
-//
-//    }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View item=LayoutInflater.from(parent.getContext()).inflate(R.layout.task_layout,parent,false);
+        if(y.length<=x)
+            x=x-y.length;
+        View item=LayoutInflater.from(parent.getContext()).inflate(y[x],parent,false);
+       x=x+1;
         return new ViewHolder(item);
     }
-
-
-
-//    public void setContext(Context context) {
-//        this.context = context;
-//    }
     public Context getContext()
     {
         return mainActivity;
@@ -65,6 +65,7 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
 
         }
     }
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         db.openDatabase();

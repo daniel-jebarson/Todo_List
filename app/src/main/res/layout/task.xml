@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#97f4fe">
+    android:background="?attr/task">
 
     <EditText
         android:id="@+id/Task_title"
@@ -89,14 +89,16 @@
         android:textSize="20dp">
 
     </EditText>
+
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/task_description"
         android:layout_marginStart="5dp"
-        android:backgroundTint="#00aac5"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/purple_700"
         android:text="Save">
 
     </Button>

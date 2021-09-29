@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Modes"
+        app:showAsAction="never">
+    <menu>
+        <item
+            android:id="@+id/light_mode"
+            android:icon="@drawable/ic_baseline_light_mode_24"
+            android:title="light mode" />
+        <item
+            android:id="@+id/dark_mode"
+            android:icon="@drawable/ic_baseline_dark_mode_24"
+            android:title="darkmode" />
+    </menu>
+    </item>
+
+
+</menu>
