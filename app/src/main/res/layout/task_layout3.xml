@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="50dp"
     android:elevation="5dp"
     app:cardBackgroundColor="?attr/task_layout3"
     android:id="@+id/cardcolor">
@@ -18,6 +18,7 @@
             android:layout_marginTop="20dp"
             android:buttonTint="#3888AC"
             android:checked="false"
+            android:layout_marginStart="10dp"
             android:paddingStart="3dp"
             android:text="Sample Title"
             android:textColor="@color/purple_700"
@@ -34,7 +35,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:text="Due Date:"
-            android:textColor="@color/teal_700"
+            android:textColor="#FFFFFF"
             android:textSize="22dp"
             android:textStyle="bold">
 
@@ -51,7 +52,7 @@
             android:layout_marginEnd="5dp"
             android:layout_toRightOf="@id/due_date"
             android:text=""
-            android:textColor="@color/purple_200"
+            android:textColor="#DDDDDD"
             android:textSize="22dp">
 
         </TextView>
@@ -64,7 +65,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
             android:text="Due Time:"
-            android:textColor="#FF9800"
+            android:textColor="#FFFFFF"
             android:textSize="22dp"
             android:textStyle="bold">
 
@@ -78,7 +79,7 @@
             android:layout_marginStart="135dp"
             android:layout_marginTop="16dp"
             android:text=""
-            android:textColor="@color/purple_200"
+            android:textColor="#DDDDDD"
             android:textSize="22dp">
 
         </TextView>
@@ -91,7 +92,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
             android:text="Remainder date:"
-            android:textColor="#FF9800"
+            android:textColor="#FFFFFF"
             android:textSize="22dp"
             android:textStyle="bold">
 
@@ -105,7 +106,7 @@
             android:layout_marginStart="195dp"
             android:layout_marginTop="16dp"
             android:text=""
-            android:textColor="@color/purple_200"
+            android:textColor="#DDDDDD"
             android:textSize="20dp"></TextView>
 
         <TextView
@@ -116,7 +117,7 @@
             android:layout_marginStart="25dp"
             android:layout_marginTop="15dp"
             android:text="Remainder time:"
-            android:textColor="#FF9800"
+            android:textColor="#FFFFFF"
             android:textSize="22dp"
             android:textStyle="bold">
 
@@ -130,7 +131,7 @@
             android:layout_marginStart="195dp"
             android:layout_marginTop="16dp"
             android:text=""
-            android:textColor="@color/purple_200"
+            android:textColor="#DDDDDD"
             android:textSize="20dp">
 
         </TextView>

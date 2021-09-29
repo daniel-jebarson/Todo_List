@@ -8,10 +8,10 @@
         android:id="@+id/Task_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Type your task here"
+        android:hint="Title"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20dp">
+        android:textSize="24dp">
 
     </EditText>
 
@@ -25,13 +25,13 @@
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="4dp"
         android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
-        android:hint="Select here to choose the due date"
+        android:hint="Due date"
         android:paddingStart="5dp"
         android:paddingTop="1dp"
         android:paddingEnd="5dp"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20dp">
+        android:textSize="24dp">
 
     </TextView>
 
@@ -42,10 +42,10 @@
         android:layout_below="@id/date_picker"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_baseline_access_time_24"
-        android:hint="Enter the due time"
+        android:hint="Due time"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20dp">
+        android:textSize="24dp">
 
     </TextView>
 
@@ -55,11 +55,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/time_picker"
         android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/ic_baseline_alarm_24"
-        android:hint="Enter the notification date"
+        android:drawableLeft="@drawable/ic_baseline_calendar_red_24"
+        android:hint="Notification date"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20dp">
+        android:textSize="24dp">
 
     </TextView>
 
@@ -70,10 +70,10 @@
         android:layout_below="@id/notify_date_picker"
         android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_baseline_alarm_24"
-        android:hint="Enter the notification time"
+        android:hint="Notification time"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20dp">
+        android:textSize="24dp">
 
     </TextView>
 
@@ -83,10 +83,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/notify_picker"
         android:layout_marginTop="10dp"
-        android:hint="Type your task details here"
+        android:hint="Description"
         android:textColor="#00aac5"
         android:textColorHint="#0096ab"
-        android:textSize="20dp">
+        android:textSize="24dp">
 
     </EditText>
 
@@ -97,9 +97,9 @@
         android:layout_below="@id/task_description"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/purple_700"
-        android:text="Save">
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Save"
+        android:textColor="@color/white">
 
     </Button>
 
