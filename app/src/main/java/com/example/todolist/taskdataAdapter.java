@@ -26,6 +26,7 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
     private Context context;
     private static int x=0;
     private static  int[] y={2131492981, 2131492982, 2131492983, 2131492984};
+    private static int[] z={R.layout.task_layout1,R.layout.task_layout2,R.layout.task_layout3,R.layout.task_layout4};
     public taskdataAdapter(database db,MainActivity mainActivity) {
         this.db=db;
         this.mainActivity=mainActivity;
@@ -36,8 +37,8 @@ public class taskdataAdapter extends RecyclerView.Adapter<taskdataAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if(y.length<=x)
-            x=x-y.length;
-        View item=LayoutInflater.from(parent.getContext()).inflate(y[x],parent,false);
+            x=x-z.length;
+        View item=LayoutInflater.from(parent.getContext()).inflate(z[x],parent,false);
        x=x+1;
         return new ViewHolder(item);
     }

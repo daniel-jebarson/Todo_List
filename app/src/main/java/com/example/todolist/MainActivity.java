@@ -66,10 +66,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         getSupportActionBar().hide();
         light_mode=findViewById(R.id.light_mode);
         dark_mode=findViewById(R.id.dark_mode);
-//        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
-//        {
-//            dark_mode.setChecked(true);
-//        }
+
         //WELCOMING
         welcome=findViewById(R.id.welcome);
         Calendar calendar=Calendar.getInstance();
@@ -81,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             welcome.setText("GOOD MORNING");
         else
             welcome.setText("GOOD AFTERNOON");
-
 
 
         db=new database(this);

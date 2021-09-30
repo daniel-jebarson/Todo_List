@@ -284,10 +284,13 @@ public class AddNewTask extends BottomSheetDialogFragment {
                         Toast.makeText(getContext(), "Enter proper notification date and time", Toast.LENGTH_SHORT).show();
                     else if ((date_len > 0 && time_len > 0 && notify_date_len > 0 && notify_len > 0) && (return_millies((notify_date + " " + notify), (date + " " + time)) < 0))
                         Toast.makeText(getContext(), "Check your due date and notify date properly", Toast.LENGTH_SHORT).show();
+                    else if((date_len>0 && time_len>0 && notify_date_len>0 &&notify_len>0) && ((return_millies_current(notify_date + " " + notify) < 0)||(return_millies_current(date + " " + time) < 0)))
+                        Toast.makeText(getContext(), "Check your due time and notify time properly", Toast.LENGTH_SHORT).show();
                     else {
 
                         //working
                         if(notify_len>0 && notify_date_len>0) {
+
                             createNotificationChannel();
                             ArrayList<PendingIntent> intentArray = new ArrayList<>();
                             AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
