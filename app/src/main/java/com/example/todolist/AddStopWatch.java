@@ -1,6 +1,7 @@
 package com.example.todolist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,14 @@ public class AddStopWatch extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
+        {
+            setTheme(R.style.DarkTheme);
+        }
+        else
+        {
+            setTheme(R.style.Apptheme);
+        }
         setContentView(R.layout.activity_add_stop_watch);
         chronometer=findViewById(R.id.chronometer);
         chronometer.setFormat("Stopwatch:  %s");
@@ -65,6 +74,7 @@ public class AddStopWatch extends AppCompatActivity {
                 pauseoffset=0;
                 Intent intent=new Intent(AddStopWatch.this,MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

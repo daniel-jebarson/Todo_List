@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,AddStopWatch.class);
                 startActivity(intent);
-
+                finish();
             }
         });
 

@@ -35,6 +35,7 @@
         <item name="task_layout2">#DB4437</item>
         <item name="task_layout3">#F4B400</item>
         <item name="task_layout4">#0F9D58</item>
+        <item name="timer_layout">#018786</item>
 
 
     </style>
@@ -53,6 +54,7 @@
         <item name="task_layout2">#000000</item>
         <item name="task_layout3">#000000</item>
         <item name="task_layout4">#000000</item>
+        <item name="timer_layout">#000000</item>
     </style>
 
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddStopWatch">
+    tools:context=".AddStopWatch"
+    android:background="?attr/timer_layout">
 
     <Chronometer
         android:id="@+id/chronometer"
@@ -12,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
-        android:textColor="#03A9F4"
+        android:textColor="#094C81"
         android:textSize="45dp"
-        android:textStyle="bold" >
+        android:textStyle="bold">
 
     </Chronometer>
     <Button
@@ -27,9 +28,10 @@
         android:text="start"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:backgroundTint="@color/colorPrimaryDark">
+        android:backgroundTint="@color/task_layout4">
 
     </Button>
+
     <Button
         android:id="@+id/resettimer"
         android:layout_width="wrap_content"
@@ -37,10 +39,10 @@
         android:layout_below="@+id/starttimer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#FF9800"
         android:text="reset"
-        android:textStyle="bold"
         android:textColor="@color/black"
-        android:backgroundTint="#FFEB3B">
+        android:textStyle="bold">
 
     </Button>
     <Button

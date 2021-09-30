@@ -17,5 +17,6 @@
     <color name="task_layout2">#DB4437</color>
     <color name="task_layout3">#F4B400</color>
     <color name="task_layout4"> #0F9D58</color>
+    <color name="timer_layout">#018786</color>
 
 </resources>
