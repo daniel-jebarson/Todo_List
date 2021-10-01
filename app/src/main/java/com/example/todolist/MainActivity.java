@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
     private TextView welcome;
     private FloatingActionButton mode;
     private MenuItem light_mode,dark_mode;
+
 //added
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -157,16 +158,30 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
                         {
                             case R.id.light_mode:
                             {
-                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                                Toast.makeText(getApplicationContext(), "Switched to light mode", Toast.LENGTH_SHORT).show();
-                                return true;
+                                if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_NO)
+                                {
+                                    Toast.makeText(getApplicationContext(), "You are already using light mode", Toast.LENGTH_SHORT).show();
+                                    return true;
+                                }
+                                else {
+                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                                    Toast.makeText(getApplicationContext(), "Switched to light mode", Toast.LENGTH_SHORT).show();
+                                    return true;
+                                }
                             }
                             case R.id.dark_mode:
                             {
-                                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                                Toast.makeText(getApplicationContext(), "Switched to dark mode", Toast.LENGTH_SHORT).show();
-                                reset();
-                                return  true;
+                                if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
+                                {
+                                    Toast.makeText(getApplicationContext(), "You are already using dark mode", Toast.LENGTH_SHORT).show();
+                                    return true;
+                                }
+                                else {
+                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                                    Toast.makeText(getApplicationContext(), "Switched to dark mode", Toast.LENGTH_SHORT).show();
+                                    reset();
+                                    return true;
+                                }
                             }
                             default:
                             {
@@ -218,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         MainActivity.super.onBackPressed();
+//                        finish();
                     }
                 })
                 .setNegativeButton("Cancel",null);
