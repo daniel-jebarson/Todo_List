@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00727a"
+    android:background="@color/bgc"
+    android:id="@+id/splash"
     tools:context=".Splash_screen">
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="352dp"
+        android:layout_height="364dp"
         android:layout_centerInParent="true"
-        android:contentDescription="Welcome to productivity zone"
-        android:src="@drawable/ic_launcher_background">
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/app_logo1">
 
     </ImageView>
 
@@ -22,8 +23,8 @@
         android:layout_width="29dp"
         android:layout_height="12dp"
         android:layout_below="@id/logo"
+        android:layout_marginTop="-8dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
         app:alliance_animDuration="500"
         app:alliance_distanceMultiplier="4"
         app:alliance_dotsRadius="5dp"

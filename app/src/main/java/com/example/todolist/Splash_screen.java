@@ -2,9 +2,14 @@ package com.example.todolist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
+import android.view.View;
 import android.view.WindowManager;
 
 public class Splash_screen extends AppCompatActivity {
