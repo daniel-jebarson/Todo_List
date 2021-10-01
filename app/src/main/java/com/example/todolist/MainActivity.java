@@ -72,12 +72,43 @@ public class MainActivity extends AppCompatActivity implements DialogCloseListen
         Calendar calendar=Calendar.getInstance();
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("a");
         String am_pm=simpleDateFormat.format(calendar.getTime());
+        SimpleDateFormat simpleDateFormat1=new SimpleDateFormat("h");
+        String hr=simpleDateFormat1.format(calendar.getTime());
         if(am_pm.equals("pm"))
-            welcome.setText("GOOD EVENING");
+        {
+            if(Integer.parseInt(hr)==12)
+            {
+                welcome.setText("Good afternoon");
+            }
+            else if(Integer.parseInt(hr)<=4)
+            {
+                welcome.setText("Good afternoon");
+            }
+            else if(Integer.parseInt(hr)>4 && Integer.parseInt(hr)<=7)
+            {
+                welcome.setText("Good evening");
+            }
+            else
+            {
+                welcome.setText("Good night");
+            }
+
+        }
         else if(am_pm.equals("am"))
-            welcome.setText("GOOD MORNING");
-        else
-            welcome.setText("GOOD AFTERNOON");
+        {
+            if(Integer.parseInt(hr)==12)
+            {
+                welcome.setText("Good night");
+            }
+            else if(Integer.parseInt(hr)<5)
+            {
+                welcome.setText("Good night");
+            }
+            else
+            {
+                welcome.setText("Good morning");
+            }
+        }
 
 
         db=new database(this);
